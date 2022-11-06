@@ -1,8 +1,7 @@
 package com.example.good.service;
 
 import com.example.good.domain.food.Food;
-import com.example.good.domain.food.FoodRepository;
-import com.example.good.godata.DataClient;
+import com.example.good.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

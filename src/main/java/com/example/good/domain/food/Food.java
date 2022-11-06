@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Builder
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -16,7 +16,7 @@ public class Food {
     private Long id;
 
     @Column(nullable = false, length = 30)
-    private String desc_kor;                  // 식품이름
+    private String name;                  // 식품이름
 
     @Column(nullable = false)
     private int serving_wt;                   // 1회제공량 (g)

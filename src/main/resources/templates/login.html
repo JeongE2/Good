@@ -118,44 +118,7 @@
 
 
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
-        &nbsp;&nbsp;
-        <a class="navbar-brand" href="index.html">
-          <svg class="bi pe-none me-1 " width="16" height="16"><use xlink:href="#compass"/></svg>
-          좋은 음식, 좋은 약</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-                <a class="nav-link" href="foodPages/food.html">식품</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="functionalPages/functional.html">건강기능식품</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="drugPages/drug.html">의약품</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="mypagePages/mypage.html">마이페이지</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav me-0 mb-2 mb-md-0">
-             
-              <li class="nav-item">
-                <a class="nav-link" href="login.html">로그인</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="join.html">회원가입</a>
-              </li>
-          </ul>
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/commontop :: menu('login')">
     </nav>
 
 <br><br><br><br><br><br><br>
