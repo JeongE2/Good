@@ -2,11 +2,8 @@ package com.example.good.controller;
 
 import com.example.good.domain.food.Food;
 import com.example.good.repository.FoodRepository;
-import com.example.good.service.FoodService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
