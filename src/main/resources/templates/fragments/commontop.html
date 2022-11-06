@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="starter-template.css" th:href="@{/starter-template.css}" rel="stylesheet">
+
+    <title th:text="${title}">Hello, Spring Boot!</title>
+</head>
+  <body>  
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:fragment="menu(menu)">
+        <div class="container-fluid">
+          &nbsp;&nbsp;
+          <a class="navbar-brand" href="#" th:href="@{/}">
+            <svg class="bi pe-none me-1 " width="16" height="16">
+              <use xlink:href="#compass" />
+            </svg>
+            좋은 음식, 좋은 약</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/board/list}">식품</a> <!-- 동적인 링크는 이것처럼 정적 링크는 static부터 시작한 경로로 링크 설정-->
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/health}">건강기능식품</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/drug}">의약품</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/my}">마이페이지</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav me-0 mb-2 mb-md-0">
+    
+              <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/login}">로그인</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" th:href="@{/join}">회원가입</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div style="width: 250px;" th:fragment="hyaha(haha)">hello</div>
+
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;" th:fragment="side(side)">
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" th:href="@{/board/list}" class="nav-link active" aria-current="page">
+              식품 목록
+            </a>
+          </li>
+          <li>
+            <a href="//food_SearchBy.html" class="nav-link text-white">
+  
+              기준별 검색
+            </a>
+          </li>
+          <li>
+            <a href="#" th:href="@{/board/diet}" class="nav-link text-white">
+  
+              식단 분석
+            </a>
+          </li>
+          <li>
+            <a href="//food_Report.html" class="nav-link text-white">
+  
+              관련 보고서
+            </a>
+          </li>
+        </ul>
+        <hr>
+      </div>
+  </body>  
+</html>
