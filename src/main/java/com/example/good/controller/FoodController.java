@@ -4,32 +4,31 @@ import com.example.good.domain.food.Food;
 import com.example.good.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.util.StringUtils;
 
-import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/food")
 @RequiredArgsConstructor
 public class FoodController {
-    //private final FoodService foodService;
 
     @Autowired
     private FoodRepository foodRepository;
 
-//    @GetMapping("/foods/{id}")
-//    public String detail(@PathVariable Long id, Model model){
-//        model.addAttribute("food", foodService.detail(id));
-//        return "foodPages/food_detail";
-//    }
+    @GetMapping("/find")
+    public String find(Model model, @PageableDefault(size = 5) Pageable pageable,
+                       @RequestParam(required = false, defaultValue = "") String searchText) {
+        Page<Food> foods = foodRepository.findByNameContaining(searchText, pageable);
+        int startPage = Math.max(1,foods.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(foods.getTotalPages(),foods.getPageable().getPageNumber() + 4);
 
-    @GetMapping("/foods")
-    List<Food> all(@RequestParam(required = false) String name){
-        if(StringUtils.isEmpty(name)){
-            return foodRepository.findAll();
-        } else{
-            return foodRepository.findByName(name);
-        }
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
+        model.addAttribute("foods",foods);
+        return "foodPages/foodFind";
     }
 }

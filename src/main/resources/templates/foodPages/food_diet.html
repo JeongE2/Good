@@ -1,6 +1,24 @@
 <!doctype html>
 <html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
 <head>
+  <script>
+    const addInput = () => {
+      const box = document.getElementById("foods");
+      const newP = document.createElement('tr');
+      newP.innerHTML = " <td><input type=\"text\" disabled></td>";
+      box.appendChild(newP);
+    }
+
+    var openWin;
+    function openPopup(){
+      openWin = window.open('http://localhost:9090/board/find','findfood', 'width=460,height=510,location=no, status=no,scrollbars=no')
+    }
+
+    function trRemove(ths){
+      var $tr = $(ths).parents("tr");
+      $tr.remove();
+    }
+  </script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,13 +40,6 @@
 
 
   <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
 
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
@@ -48,18 +59,6 @@
       flex-shrink: 0;
       width: 1.5rem;
       height: 100vh;
-    }
-
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
-
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
     }
 
     .nav-scroller .nav {
@@ -106,61 +105,41 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" th:replace="fragments/commontop :: menu('food')"></nav>
 
   <main class="d-flex flex-nowrap" style="position:fixed; top: 25px;">
-    <h1 class="visually-hidden">Sidebars examples 사이드바도 common으로 묶자</h1>
+    <h1 class="visually-hidden"></h1>
 
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;" th:replace="fragments/commontop :: side('food')"></div>
 
     <div class="b-example-divider b-example-vr" style="width: 15px"></div>
 
     <div class="d-flex flex-column flex-shrink-0 p-5" style="width: 900px;">
-      <h2>식품 게시판</h2>
+      <h2>식단 분석 프로그램</h2>
       <br>
-      <div>총 건수 : <span th:text="${foods.totalElements}"></span></div>
-      <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/list}">
-        <div class="form-group mx-sm-3 mb-2">
-          <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">검색</button>
-      </form>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">번호</th>
-            <th scope="col">음식명</th>
-            <th scope="col">1회제공량</th>
-            <th scope="col">열량</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="food : ${foods}">
-            <td th:text="${food.id}">1</td>
-            <td><a th:text="${food.name}" th:href="@{/board/detail(id=${food.id})}">잡채</a></td>
-            <td th:text="${food.serving_wt}+(g)">150</td>
-            <td th:text="${food.nutr_cont1}+(kcal)">204</td>
-          </tr>
-      </table>
-  
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item" th:classappend="${1 == foods.pageable.pageNumber+1} ? 'disabled'">
-            <a class="page-link" href="#"
-              th:href="@{/board/list(page=${foods.pageable.pageNumber-1},searchText=${param.searchText})}">Previous</a>
-          </li>
-          <li class="page-item" th:classappend="${i == foods.pageable.pageNumber+1} ? 'disabled'"
-            th:each="i : ${#numbers.sequence(startPage, endPage)}">
-            <a class="page-link" href="#" th:href="@{/board/list(page=${i-1},searchText=${param.searchText})}"
-              th:text="${i}">1</a>
-          </li>
-          <li class="page-item" th:classappend="${foods.totalPages == foods.pageable.pageNumber+1} ? 'disabled'">
-            <a class="page-link" href="#"
-              th:href="@{/board/list(page=${foods.pageable.pageNumber+1},searchText=${param.searchText})}">Next</a>
-          </li>
-        </ul>
-      </nav>
+      <h4> 하루동안 섭취한 음식을 모두 입력하세요. </h4>
+      <br><br><br><br>
+      <div>
+        <span>
+          오늘 먹은 음식들&nbsp&nbsp&nbsp <button onclick="openPopup()">음식 찾기</button>
+        </span>
+        <hr>
+        <form method="post" th:action="@{/board/analyze}">
+          <table id="foods" >
+            <tbody>
+            <tr>
+              <td>예시) 음식명 : <input type="text" disabled value="육회비빔밥"> &nbsp</td>
+              <td>섭취량 : <input type="text" value="200" disabled >g (그람 단위로 입력)</td>
+            </tr>
+            </tbody>
+          </table>
+          <br>
+          <input type="submit" value="분석하기"> <input type="reset" 초기화>
+        </form>
+      </div>
     </div>
   </div>
 
   </main>
+
+
 
     <!-- Begin page content -->
 

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" class="h-100" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script>
+        function selectClicked(name, id){
+            const box = opener.document.getElementById("foods");
+            const newP = opener.document.createElement('tr');
+            newP.innerHTML = "<td> 음식명 : <input name=\"name\" type=\"text\" value=\""+name+
+                "\" disabled></td><td>섭취량 : (구현중)"  //<input type="text">g</td>
+            +"<input name=\"id\" type=\"text\" hidden value='"+id+"'>";
+                //+ "<td name=\"cancle\"><a href=\"javascript:void(0);\" onClick=\"trRemove(this);return false;\"className=\"btn btn-warning btn-sm\"></a></td>";
+            box.appendChild(newP);
+            window.close();
+        }
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>식품_검색</title>
+
+    <link href="bootstrap-5.0.2-examples/navbar-fixed/navbar-top-fixed.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="justify-content-center m-5">
+
+    <h3 > 식품 검색 </h3>
+
+    <form class="form-inline d-flex justify-content-end" method="GET" th:action="@{/board/find}">
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="searchText" name="searchText" th:value="${param.searchText}">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">검색</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">음식명</th>
+            <th scope="col">1회제공량</th>
+            <th scope="col">열량</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="food : ${foods}">
+                <td th:text="${food.name}">잡채</td>
+                <td th:text="${food.serving_wt}+(g)">150</td>
+                <td th:text="${food.nutr_cont1}+(kcal)">204</td>
+                <td><input class="btn btn-success mb-2" type="button" value="선택" th:name="${food.name}" th:fid="${food.id}"
+                           th:onclick="selectClicked(this.getAttribute('name'), this.getAttribute('fid'))" ></td>
+            </tr>
+
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${1 == foods.pageable.pageNumber+1} ? 'disabled'">
+                <a class="page-link" href="#"
+                   th:href="@{/board/find(page=${foods.pageable.pageNumber-1},searchText=${param.searchText})}">Previous</a>
+            </li>
+            <li class="page-item" th:classappend="${i == foods.pageable.pageNumber+1} ? 'disabled'"
+                th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                <a class="page-link" href="#" th:href="@{/board/find(page=${i-1},searchText=${param.searchText})}"
+                   th:text="${i}">1</a>
+            </li>
+            <li class="page-item" th:classappend="${foods.totalPages == foods.pageable.pageNumber+1} ? 'disabled'">
+                <a class="page-link" href="#"
+                   th:href="@{/board/find(page=${foods.pageable.pageNumber+1},searchText=${param.searchText})}">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+</html>

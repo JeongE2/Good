@@ -10,7 +10,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class Food {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
