@@ -41,13 +41,12 @@ public class Food_Recommend {
         }
 
         //음식 제거작업 시작
+        Quick_Sort1 q = new Quick_Sort1();
         if (FoodList_sum.getNutr_cont1() > criteria.getNutr_cont1())    //열량이 기준치를 초과할 경우
         {
-            Quick_Sort1 q = new Quick_Sort1();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort1(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,1);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -65,15 +64,9 @@ public class Food_Recommend {
                         break;            //제거 즉시 for문 탈출
                     }
                 }
-
                 FoodList_remove.add(FoodList_sort_desc.get(i));        //제거한 음식은 제거목록에 추가
-
                 i++;
-
             } while (FoodList_sum.getNutr_cont1() > criteria.getNutr_cont1());    // 여전히 수치를 초과한다면 계속 반복 제거
-
-            //해당 영양소 수치가 정상화 되었다면 while문 반복 멈추고 나옴
-
         }
 
 
@@ -81,12 +74,9 @@ public class Food_Recommend {
 
 
         if (FoodList_sum.getNutr_cont2() > criteria.getNutr_cont2()) {
-
-            Quick_Sort2 q = new Quick_Sort2();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort2(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,2);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -119,12 +109,9 @@ public class Food_Recommend {
 
 
         if (FoodList_sum.getNutr_cont3() > criteria.getNutr_cont3()) {
-
-            Quick_Sort3 q = new Quick_Sort3();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort3(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,3);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -159,12 +146,9 @@ public class Food_Recommend {
 
 
         if (FoodList_sum.getNutr_cont4() > criteria.getNutr_cont4()) {
-
-            Quick_Sort4 q = new Quick_Sort4();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort4(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,4);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -197,12 +181,9 @@ public class Food_Recommend {
 
 
         if (FoodList_sum.getNutr_cont5() > criteria.getNutr_cont5()) {
-
-            Quick_Sort5 q = new Quick_Sort5();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort5(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,5);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -235,12 +216,9 @@ public class Food_Recommend {
 
 
         if (FoodList_sum.getNutr_cont6() > criteria.getNutr_cont6()) {
-
-            Quick_Sort6 q = new Quick_Sort6();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort6(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,6);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -273,12 +251,9 @@ public class Food_Recommend {
 
 
         if (FoodList_sum.getNutr_cont7() > criteria.getNutr_cont7()) {
-
-            Quick_Sort7 q = new Quick_Sort7();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort7(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,7);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -311,12 +286,9 @@ public class Food_Recommend {
 
 
         if (FoodList_sum.getNutr_cont8() > criteria.getNutr_cont8()) {
-
-            Quick_Sort8 q = new Quick_Sort8();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort8(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,8);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -353,12 +325,9 @@ public class Food_Recommend {
         //여기서 나머지 1개까지 모두 제거완료, getNutr_cont8은 0이됨
 
         if (FoodList_sum.getNutr_cont9() > criteria.getNutr_cont9()) {
-
-            Quick_Sort9 q = new Quick_Sort9();    //내림차순 퀵정렬 클래스
-
             FoodList_sort_desc.clear();        //기존 ArrayList 초기화
 
-            FoodList_sort_desc_temp = q.quickSort9(FoodList);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
+            FoodList_sort_desc_temp = q.quickSort1(FoodList,9);    //FoodList를 해당 영양소 기준으로 내림차순 정렬
 
             for (i = 0; i < FoodList_sort_desc_temp.size(); i++)    //ArrayList 복사
             {
@@ -369,7 +338,6 @@ public class Food_Recommend {
             i = 0;
 
             do {
-
                 FoodList_sum = d.difference(FoodList_sum, FoodList_sort_desc.get(i));    // 해당 영양소에 대해 제일 큰 수치를 가진 0번 음식부터 제거
 
                 for (j = 0; j < FoodList.size(); j++)        //FoodList에서도 해당 음식 제거
@@ -379,7 +347,6 @@ public class Food_Recommend {
                         break;            //제거 즉시 for문 탈출
                     }
                 }
-
                 FoodList_remove.add(FoodList_sort_desc.get(i));        //제거한 음식은 제거목록에 추가
 
                 i++;
@@ -388,33 +355,9 @@ public class Food_Recommend {
 
             //해당 영양소 수치가 정상화 되었다면 while문 반복 멈추고 나옴
         }
-        //return FoodList_remove; //FoodEntity Arraylist
-        //return required_nutr; //FoodEntity
         required_nutr = d.difference(criteria, FoodList_sum);    //1일 기준치와 영양소 과다음식 제거 후 남은 영양성분 수치의 차를 구하여 최종적으로 필요해진 영양소량 계산
         FoodList_remove.add(required_nutr);
         return FoodList_remove;
-/*
-        for (i = 0; i < FoodList_remove.size(); i++)        //식단에서 제거해야할 음식들을 차례로 출력해줌
-        {
-            System.out.printf("%s ", FoodList_remove.get(i).getName());
-        }
-
-        System.out.println("을(를) 안먹고 다른 음식을 먹어보세요.\n");
-
-
-        required_nutr = d.difference(criteria, FoodList_sum);    //1일 기준치와 영양소 과다음식 제거 후 남은 영양성분 수치의 차를 구하여 최종적으로 필요해진 영양소량 계산
-
-        System.out.printf("필요한 열량 : %f kcal\n", required_nutr.getNutr_cont1());
-        System.out.printf("필요한 탄수화물 : %f g\n", required_nutr.getNutr_cont2());
-        System.out.printf("필요한 단백질 : %f g\n", required_nutr.getNutr_cont3());
-        System.out.printf("필요한 지방 : %f g\n", required_nutr.getNutr_cont4());
-        System.out.printf("필요한 당 : %f g\n", required_nutr.getNutr_cont5());
-        System.out.printf("필요한 나트륨 : %f mg\n", required_nutr.getNutr_cont6());
-        System.out.printf("필요한 콜레스테롤 : %f mg\n", required_nutr.getNutr_cont7());
-        System.out.printf("필요한 포화지방산 : %f g\n", required_nutr.getNutr_cont8());
-        System.out.printf("필요한 트랜스지방산 : %f g\n", required_nutr.getNutr_cont9());
-        //이 필요한 영양성분들을 가진 음식들을 추천해줌 ( 모든 영양성분 수치 조건들을 and로 연산 )
-        */
     }
 }
 
